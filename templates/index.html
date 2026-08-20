@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>AI SOP Navigator</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+<header class="topbar">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            AI
+        </div>
+
+        <div>
+            <h1>AI SOP Navigator</h1>
+
+            <p>
+                Intelligent SOP Analysis
+            </p>
+        </div>
+
+    </div>
+
+    <div class="status">
+        <span class="status-dot"></span>
+        System Ready
+    </div>
+
+</header>
+
+
+<main class="container">
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                AI-POWERED SOP INTELLIGENCE
+            </div>
+
+            <h2>
+                Turn Complex SOPs
+                <span>Into Intelligence.</span>
+            </h2>
+
+            <p>
+                Upload an SOP, analyze procedures, detect risks,
+                and ask AI questions about your document or anything else.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- UPLOAD -->
+
+    <section class="upload-section">
+
+        <div class="section-title">
+
+            <div>
+                <h3>Upload SOP</h3>
+
+                <p>
+                    Upload a PDF, DOCX, or TXT document
+                    for intelligent analysis.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div
+            class="upload-box"
+            id="uploadBox"
+        >
+
+            <div class="upload-icon">
+                ↑
+            </div>
+
+            <h4>
+                Drop your SOP here
+            </h4>
+
+            <p>
+                or select a document from your computer
+            </p>
+
+            <input
+                type="file"
+                id="fileInput"
+                accept=".pdf,.docx,.txt"
+                hidden
+            >
+
+            <button
+                class="primary-btn"
+                id="selectFileBtn"
+            >
+                Select SOP
+            </button>
+
+            <div
+                class="file-name"
+                id="fileName"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ANALYSIS STATUS -->
+
+    <section
+        class="analysis-status hidden"
+        id="analysisStatus"
+    >
+
+        <div class="loader"></div>
+
+        <div>
+
+            <strong>
+                Processing SOP...
+            </strong>
+
+            <p>
+                Extracting and analyzing document content.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FIVE CORE FEATURES -->
+
+    <section class="features-section">
+
+        <div class="section-heading">
+
+            <span>
+                CORE INTELLIGENCE
+            </span>
+
+            <h3>
+                Five AI Capabilities
+            </h3>
+
+            <p>
+                Intelligent tools for safer and more reliable
+                SOP management.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+
+            <!-- FEATURE 1 -->
+
+            <div
+                class="feature-card matching"
+                data-feature="matching"
+            >
+
+                <div class="feature-icon">
+                    🧠
+                </div>
+
+                <span class="feature-number">
+                    01
+                </span>
+
+                <h4>
+                    Situation → SOP Matching
+                </h4>
+
+                <p>
+                    Understand a real-world situation
+                    and identify the most relevant SOP procedure.
+                </p>
+
+                <button
+                    class="feature-btn"
+                    onclick="openFeature('matching')"
+                >
+                    Analyze Situation →
+                </button>
+
+            </div>
+
+
+            <!-- FEATURE 2 -->
+
+            <div
+                class="feature-card conflict"
+                data-feature="conflict"
+            >
+
+                <div class="feature-icon">
+                    ⚠️
+                </div>
+
+                <span class="feature-number">
+                    02
+                </span>
+
+                <h4>
+                    Conflict Detection
+                </h4>
+
+                <p>
+                    Identify contradictory instructions
+                    across SOP statements.
+                </p>
+
+                <button
+                    class="feature-btn"
+                    onclick="openFeature('conflict')"
+                >
+                    Detect Conflicts →
+                </button>
+
+            </div>
+
+
+            <!-- FEATURE 3 -->
+
+            <div
+                class="feature-card version"
+                data-feature="version"
+            >
+
+                <div class="feature-icon">
+                    🔄
+                </div>
+
+                <span class="feature-number">
+                    03
+                </span>
+
+                <h4>
+                    Version / Outdated Detection
+                </h4>
+
+                <p>
+                    Identify potentially outdated SOPs
+                    using version and update information.
+                </p>
+
+                <button
+                    class="feature-btn"
+                    onclick="openFeature('version')"
+                >
+                    Check Version →
+                </button>
+
+            </div>
+
+
+            <!-- FEATURE 4 -->
+
+            <div
+                class="feature-card gap"
+                data-feature="gap"
+            >
+
+                <div class="feature-icon">
+                    🔎
+                </div>
+
+                <span class="feature-number">
+                    04
+                </span>
+
+                <h4>
+                    SOP Gap Detection
+                </h4>
+
+                <p>
+                    Identify potentially missing,
+                    incomplete, or unclear SOP areas.
+                </p>
+
+                <button
+                    class="feature-btn"
+                    onclick="openFeature('gap')"
+                >
+                    Find Gaps →
+                </button>
+
+            </div>
+
+
+            <!-- FEATURE 5 -->
+
+            <div
+                class="feature-card ask-ai"
+                data-feature="ask"
+            >
+
+                <div class="feature-icon">
+                    💬
+                </div>
+
+                <span class="feature-number">
+                    05
+                </span>
+
+                <h4>
+                    Ask Anything AI
+                </h4>
+
+                <p>
+                    Ask questions about your uploaded SOP
+                    or ask general questions using AI.
+                </p>
+
+                <button
+                    class="feature-btn"
+                    onclick="openFeature('ask')"
+                >
+                    Ask AI →
+                </button>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ANALYSIS PANEL -->
+
+    <section
+        class="analysis-panel hidden"
+        id="analysisPanel"
+    >
+
+        <div class="panel-header">
+
+            <div>
+
+                <span>
+                    AI ANALYSIS
+                </span>
+
+                <h3 id="panelTitle">
+                    SOP Intelligence
+                </h3>
+
+            </div>
+
+            <button
+                class="close-btn"
+                onclick="closeFeature()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- SITUATION MATCHING -->
+
+        <div
+            class="feature-interface hidden"
+            id="matchingInterface"
+        >
+
+            <label>
+                Describe the situation
+            </label>
+
+            <textarea
+                id="situationInput"
+                placeholder="Example: I received a damaged product..."
+            ></textarea>
+
+            <button
+                class="primary-btn"
+                onclick="analyzeSituation()"
+            >
+                Find Matching SOP
+            </button>
+
+            <div
+                class="result-box"
+                id="matchingResult"
+            ></div>
+
+        </div>
+
+
+        <!-- CONFLICT DETECTION -->
+
+        <div
+            class="feature-interface hidden"
+            id="conflictInterface"
+        >
+
+            <label>
+                SOP Statement 1
+            </label>
+
+            <textarea
+                id="statementA"
+                placeholder="Example: Manager approval is required."
+            ></textarea>
+
+
+            <label>
+                SOP Statement 2
+            </label>
+
+            <textarea
+                id="statementB"
+                placeholder="Example: Manager approval is not required."
+            ></textarea>
+
+            <button
+                class="primary-btn"
+                onclick="analyzeConflict()"
+            >
+                Detect Conflict
+            </button>
+
+            <div
+                class="result-box"
+                id="conflictResult"
+            ></div>
+
+        </div>
+
+
+        <!-- VERSION DETECTION -->
+
+        <div
+            class="feature-interface hidden"
+            id="versionInterface"
+        >
+
+            <label>
+                SOP Content
+            </label>
+
+            <textarea
+                id="versionInput"
+                placeholder="Paste SOP content containing version/date information..."
+            ></textarea>
+
+            <button
+                class="primary-btn"
+                onclick="analyzeVersion()"
+            >
+                Check Version
+            </button>
+
+            <div
+                class="result-box"
+                id="versionResult"
+            ></div>
+
+        </div>
+
+
+        <!-- GAP DETECTION -->
+
+        <div
+            class="feature-interface hidden"
+            id="gapInterface"
+        >
+
+            <label>
+                SOP Content
+            </label>
+
+            <textarea
+                id="gapInput"
+                placeholder="Paste SOP content to identify potential gaps..."
+            ></textarea>
+
+            <button
+                class="primary-btn"
+                onclick="analyzeGap()"
+            >
+                Detect SOP Gaps
+            </button>
+
+            <div
+                class="result-box"
+                id="gapResult"
+            ></div>
+
+        </div>
+
+
+        <!-- ASK ANYTHING -->
+
+        <div
+            class="feature-interface hidden"
+            id="askInterface"
+        >
+
+            <label>
+                Ask Anything
+            </label>
+
+            <textarea
+                id="questionInput"
+                placeholder="Ask anything... Example: What should I do if my product is damaged?"
+            ></textarea>
+
+            <p class="ai-hint">
+                💡 Questions related to the uploaded SOP will use
+                the document. Other questions will be answered
+                using general AI knowledge.
+            </p>
+
+            <button
+                class="primary-btn"
+                onclick="askAnything()"
+            >
+                Ask AI
+            </button>
+
+            <div
+                class="result-box"
+                id="askResult"
+            ></div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <strong>
+            AI SOP NAVIGATOR
+        </strong>
+
+        <span>
+            Know the Right SOP. Detect the Risk. Ask Anything.
+        </span>
+
+    </footer>
+
+</main>
+
+
+<script
+    src="{{ url_for('static', filename='script.js') }}"
+></script>
+
+</body>
+</html>
